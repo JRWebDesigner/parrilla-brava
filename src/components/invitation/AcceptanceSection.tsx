@@ -4,9 +4,9 @@ import { Confetti } from "./Confetti";
 import { Reveal } from "./Reveal";
 
 /** Replace with the real number, international format, no spaces or "+". */
-const WHATSAPP_NUMBER = "59100000000";
+const WHATSAPP_NUMBER = "59168071168";
 const WHATSAPP_MESSAGE =
-  "Sí, acepto la cena de mañana ❤️ Nos vemos en La Parrilla Brava.";
+  "Sí, acepto la cena de mañana.";
 
 export function AcceptanceSection() {
   const [accepted, setAccepted] = useState(false);
