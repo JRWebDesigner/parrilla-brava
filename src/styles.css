@@ -1,0 +1,267 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system: "Cena en La Parrilla Brava"
+ * Charcoal night, burgundy embers, cream type, warm gold highlights.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-ember: var(--ember);
+  --color-burgundy: var(--burgundy);
+  --color-gold: var(--gold);
+  --color-cream: var(--cream);
+  --font-display: "Cormorant Garamond", "Times New Roman", serif;
+  --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.16 0.012 25);
+  --foreground: oklch(0.945 0.018 85);
+  --card: oklch(0.205 0.016 25);
+  --card-foreground: oklch(0.945 0.018 85);
+  --popover: oklch(0.205 0.016 25);
+  --popover-foreground: oklch(0.945 0.018 85);
+  --primary: oklch(0.46 0.185 25);
+  --primary-foreground: oklch(0.97 0.015 85);
+  --secondary: oklch(0.26 0.03 25);
+  --secondary-foreground: oklch(0.945 0.018 85);
+  --muted: oklch(0.24 0.02 25);
+  --muted-foreground: oklch(0.72 0.02 70);
+  --accent: oklch(0.78 0.115 78);
+  --accent-foreground: oklch(0.18 0.02 25);
+  --destructive: oklch(0.55 0.2 27);
+  --destructive-foreground: oklch(0.97 0.01 85);
+  --border: oklch(0.32 0.03 30 / 55%);
+  --input: oklch(0.32 0.03 30 / 55%);
+  --ring: oklch(0.55 0.16 25);
+
+  --ember: oklch(0.55 0.19 28);
+  --burgundy: oklch(0.32 0.12 20);
+  --gold: oklch(0.82 0.11 80);
+  --cream: oklch(0.95 0.02 88);
+
+  --gradient-night: radial-gradient(
+      120% 80% at 50% 0%,
+      color-mix(in oklab, var(--ember) 22%, transparent),
+      transparent 65%
+    ),
+    linear-gradient(180deg, oklch(0.19 0.02 25), oklch(0.13 0.01 25));
+  --gradient-ember: linear-gradient(135deg, var(--burgundy), var(--ember));
+  --gradient-gold: linear-gradient(100deg, var(--cream), var(--gold), var(--cream));
+  --shadow-elegant: 0 24px 60px -24px oklch(0 0 0 / 0.85);
+  --shadow-glow: 0 0 60px -12px color-mix(in oklab, var(--ember) 55%, transparent);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+}
+
+@utility bg-night {
+  background-image: var(--gradient-night);
+}
+
+@utility bg-ember {
+  background-image: var(--gradient-ember);
+}
+
+@utility text-gilded {
+  background-image: var(--gradient-gold);
+  background-clip: text;
+  color: transparent;
+}
+
+@utility shadow-elegant {
+  box-shadow: var(--shadow-elegant);
+}
+
+@utility shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+@utility hairline {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, var(--gold) 55%, transparent),
+    transparent
+  );
+}
+
+/* --- Motion --------------------------------------------------- */
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes soft-glow {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.16);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.12);
+  }
+  56% {
+    transform: scale(1);
+  }
+}
+
+@keyframes drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate3d(14px, -110px, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(105vh) rotate(540deg);
+    opacity: 0;
+  }
+}
+
+@utility animate-rise {
+  animation: rise-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@utility animate-soft-glow {
+  animation: soft-glow 5s ease-in-out infinite;
+}
+
+@utility animate-heartbeat {
+  animation: heartbeat 2.4s ease-in-out infinite;
+}
+
+@utility animate-drift {
+  animation: drift linear infinite;
+}
+
+@utility animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 6s linear infinite;
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(6px);
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1s ease;
+
+  &[data-visible="true"] {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
