@@ -10,26 +10,6 @@ export function SurpriseSection() {
       <Particles count={12} />
 
       <div className="relative mx-auto max-w-xl text-center">
-        <Reveal>
-          <p className="font-display text-4xl leading-tight text-cream sm:text-5xl">
-            Pero te advierto algo...
-          </p>
-        </Reveal>
-
-        <Reveal delay={600}>
-          <p className="font-display mt-10 text-3xl leading-tight text-gilded animate-shimmer sm:text-4xl">
-            La cena es solo el comienzo.
-          </p>
-        </Reveal>
-
-        <Reveal delay={1200}>
-          <p className="font-display mt-10 text-3xl leading-tight text-cream/90 sm:text-4xl">
-            Después...
-            <br />
-            vemos qué pinta.
-          </p>
-        </Reveal>
-
         <Reveal delay={1600}>
           <div className="mx-auto mt-12 max-w-xs">
             <div className="hairline" />
